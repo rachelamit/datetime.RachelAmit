@@ -1,0 +1,357 @@
+<html><head><base href="https://couple-therapy-activities.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דייטים לזוגיות מקרבת</title>
+<style>
+  body {
+    font-family: 'Heebo', sans-serif;
+    direction: rtl;
+    background-color: #f0e6d2; /* Light sandy color from the image */
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .header-image, .footer-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .grid-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+    color: #4a4a4a;
+    font-size: 24px;
+  }
+  h2 {
+    color: #8b4513; /* Dark brown color from the image */
+    font-size: 20px;
+  }
+  button {
+    background-color: #f4a460; /* Sandy brown color from the image */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  button:hover {
+    background-color: #d2691e; /* Chocolate color for hover effect */
+  }
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  #wheel {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+  }
+  #question, #result, #youtube-result, #google-result, #cooking-task {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #4a4a4a;
+  }
+  #memory-canvas {
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    width: 100%;
+  }
+  #massage-timer {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    color: #8b4513; /* Dark brown color from the image */
+  }
+  #compliment-result {
+    margin-top: 10px;
+    font-style: italic;
+    color: #4a4a4a;
+  }
+  .checkbox-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+  }
+  .checkbox-item input {
+    margin-left: 10px;
+  }
+  #deep-question {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #8b4513; /* Dark brown color from the image */
+  }
+  #whatsapp-button {
+    background-color: #25D366; /* WhatsApp green */
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  #whatsapp-button:hover {
+    background-color: #128C7E; /* Darker WhatsApp green on hover */
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+  <img src="https://scontent.ftlv16-1.fna.fbcdn.net/v/t39.30808-6/452506101_10231654541723316_7107530202902340685_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=127cfc&amp;_nc_ohc=GuIXAR4PYzUQ7kNvgGbldYs&amp;_nc_ht=scontent.ftlv16-1.fna&amp;oh=00_AYA0P4H5K3oWUM1nFLbRaKfyv1uuRrfvH3RjnywWalhAwA&amp;oe=66C6E3FE" alt="זוג מחובק על רקע שקיעה בים" class="header-image">
+  <h1></h1>
+  
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>גלגל המזל לשאלות על הזוגיות</h2>
+      <div id="wheel"></div>
+      <button onclick="spinWheel()">סובב את הגלגל</button>
+      <div id="question"></div>
+    </div>
+
+    <div class="grid-item">
+      <h2>שאלות כן ולא 🤔💕</h2>
+      <button onclick="generateYesNoQuestion()">קבל שאלה</button>
+      <div id="result"></div>
+    </div>
+
+    <div class="grid-item">
+      <h2>זמן ריקוד 💃🕺</h2>
+      <input type="text" id="song-search" placeholder="חפש שיר לריקוד">
+      <button onclick="searchYouTube()">חפש ביוטיוב</button>
+      <div id="youtube-result"></div>
+    </div>
+
+    <div class="grid-item">
+      <h2>מתנה ב-50 שקל 🎁</h2>
+      <p>רעיונות למתנות:</p>
+      <ul>
+        <li>ספר מעניין</li>
+        <li>נר ריחני</li>
+        <li>צמח לבית</li>
+        <li>אביזר לטלפון</li>
+        <li>משחק קופסה זוגי</li>
+      </ul>
+      <input type="text" id="gift-search" placeholder="רעיון למתנה">
+      <button onclick="searchGoogle()">חפש בגוגל</button>
+      <div id="google-result"></div>
+    </div>
+
+    <div class="grid-item">
+      <h2>זמן בישול 👩‍🍳👨‍🍳</h2>
+      <button onclick="generateCookingTask()">קבל משימת בישול</button>
+      <div id="cooking-task"></div>
+    </div>
+
+    <div class="grid-item">
+      <h2>זיכרונות משותפים 📸💖</h2>
+      <textarea id="memory-text" placeholder="תארו זיכרון משותף"></textarea>
+      <button onclick="findMemoryPhotos()">מצא תמונות מהאירוע</button>
+      <div id="memory-photos"></div>
+    </div>
+
+    <div class="grid-item">
+      <h2>זמן עיסוי 💆‍♀️💆‍♂️</h2>
+      <p>זמן עיסוי הוא הזדמנות נהדרת לחיבור לא מיני. התמקדו בהרפיה, נוחות והקלה על מתחים.</p>
+      <button onclick="startMassageTimer()">התחל טיימר לעיסוי</button>
+      <div id="massage-timer">5:00</div>
+      <p>זכרו: המטרה היא יצירת אינטימיות ורוגע, לא גירוי מיני.</p>
+    </div>
+
+    <div class="grid-item">
+      <h2>דייט הכרת תודה: להודות על משהו שהשני עושה</h2>
+      <p>במהלך דייט זה, כל אחד מבני הזוג יביע תודה על משהו שהשני עושה. זו הזדמנות נהדרת להעריך את המאמצים והתשומת לב של בן/בת הזוג.</p>
+      <textarea id="gratitude-text" placeholder="כתבו כאן את הכרת התודה שלכם" rows="4"></textarea>
+      <button onclick="shareGratitude()">שתפו את הכרת התודה</button>
+      <div id="gratitude-result"></div>
+    </div>
+
+    <div class="grid-item">
+      <h2>רשימת תכונות בן/בת הזוג</h2>
+      <p>סמנו את התכונות שמאפיינות את בן/בת הזוג שלכם:</p>
+      <div class="checkbox-list" id="trait-list">
+        <!-- תכונות יתווספו כאן דינמית -->
+      </div>
+      <button onclick="analyzeTraits()">נתח תכונות</button>
+      <div id="trait-analysis"></div>
+    </div>
+
+    <div class="grid-item">
+      <h2>שאלות עומק</h2>
+      <button onclick="getDeepQuestion()">קבל שאלת עומק</button>
+      <div id="deep-question"></div>
+    </div>
+  </div>
+
+  <img src="https://scontent.ftlv16-1.fna.fbcdn.net/v/t39.30808-6/455730155_10231918696407018_6768952369943275665_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=127cfc&amp;_nc_ohc=iD5twktkMGQQ7kNvgE1cGIj&amp;_nc_ht=scontent.ftlv16-1.fna&amp;oh=00_AYCoDi3UgFY9QeHd7lrPMCvDmV28rqAMOgI9BMT_LR8bag&amp;oe=66C6FC16" alt="זוג מחובק על רקע נוף טבע" class="footer-image">
+
+  <button id="whatsapp-button" onclick="sendWhatsApp()">שלח הודעת WhatsApp</button>
+
+<script>
+let wheelItems = ['מה החלום הכי גדול שלך?', 'איך אני יכול/ה לתמוך בך יותר?', 'מה הדבר שהכי מעריך/ה בי?', 'איזה זיכרון משותף הכי אהוב עליך?', 'מה היית רוצה שנעשה יחד בעתיד?', 'איך אני יכול/ה להראות לך יותר אהבה?'];
+let wheel;
+
+function setup() {
+  let canvas = createCanvas(300, 300);
+  canvas.parent('wheel');
+  wheel = new Wheel(150, 150, 130, wheelItems);
+}
+
+function draw() {
+  background(240, 230, 210); // Light sandy background color
+  wheel.update();
+  wheel.display();
+}
+
+function spinWheel() {
+  wheel.spin();
+}
+
+class Wheel {
+  constructor(x, y, radius, items) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.items = items;
+    this.rotation = 0;
+    this.isSpinning = false;
+    this.spinSpeed = 0;
+    this.colors = [
+      color(244, 164, 96),  // Sandy brown
+      color(210, 180, 140), // Tan
+      color(139, 69, 19),   // Saddle brown
+      color(244, 164, 96),  // Sandy brown (repeated for variety)
+      color(210, 180, 140), // Tan (repeated for variety)
+      color(139, 69, 19)    // Saddle brown (repeated for variety)
+    ];
+  }
+
+  spin() {
+    this.isSpinning = true;
+    this.spinSpeed = random(0.1, 0.2);
+  }
+
+  update() {
+    if (this.isSpinning) {
+      this.rotation += this.spinSpeed;
+      this.spinSpeed *= 0.99;
+      if (this.spinSpeed < 0.001) {
+        this.isSpinning = false;
+        this.showQuestion();
+      }
+    }
+  }
+
+  display() {
+    push();
+    translate(this.x, this.y);
+    rotate(this.rotation);
+    
+    for (let i = 0; i < this.items.length; i++) {
+      let angle = TWO_PI / this.items.length;
+      let startAngle = i * angle;
+      let endAngle = (i + 1) * angle;
+      
+      fill(this.colors[i % this.colors.length]);
+      arc(0, 0, this.radius * 2, this.radius * 2, startAngle, endAngle);
+      
+      push();
+      rotate(startAngle + angle / 2);
+      translate(this.radius * 0.6, 0);
+      rotate(HALF_PI);
+      fill(255); // White text for better contrast
+      textAlign(CENTER, CENTER);
+      textSize(10);
+      text(this.items[i], 0, 0, 100);
+      pop();
+    }
+    
+    // Draw arrow
+    fill(139, 69, 19); // Saddle brown arrow
+    triangle(this.radius + 10, 0, this.radius + 30, -10, this.radius + 30, 10);
+    
+    pop();
+  }
+
+  showQuestion() {
+    let index = floor(map(this.rotation % TWO_PI, 0, TWO_PI, 0, this.items.length));
+    document.getElementById('question').innerText = this.items[index];
+  }
+}
+
+// Function to analyze traits
+function analyzeTraits() {
+  const traitList = document.getElementById('trait-list');
+  const checkedTraits = Array.from(traitList.querySelectorAll('input[type="checkbox"]:checked'))
+    .map(checkbox => checkbox.value);
+
+  let analysis = '';
+  if (checkedTraits.length === 0) {
+    analysis = 'נראה שלא סימנת אף תכונה. אולי כדאי לחשוב שוב על התכונות של בן/בת הזוג שלך?';
+  } else if (checkedTraits.length <= 3) {
+    analysis = 'סימנת מספר קטן של תכונות. זו הזדמנות טובה לחשוב על עוד דברים שאת/ה מעריך/ה בבן/בת הזוג שלך.';
+  } else if (checkedTraits.length <= 6) {
+    analysis = 'בחרת מגוון יפה של תכונות. זה מראה שאת/ה מעריך/ה הרבה דברים בבן/בת הזוג שלך.';
+  } else {
+    analysis = 'וואו! סימנת הרבה תכונות חיוביות. נראה שיש לך הערכה רבה לבן/בת הזוג שלך.';
+  }
+
+  analysis += ' התכונות שבחרת מראות שאת/ה מעריך/ה במיוחד: ' + checkedTraits.join(', ') + '.';
+
+  document.getElementById('trait-analysis').innerText = analysis;
+}
+
+// Add traits to the list when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+  const traits = [
+    'אכפתיות', 'הומור', 'אינטליגנציה', 'יצירתיות', 'נאמנות',
+    'סבלנות', 'אמפתיה', 'אחריות', 'נדיבות', 'אופטימיות'
+  ];
+
+  const traitList = document.getElementById('trait-list');
+  traits.forEach(trait => {
+    const div = document.createElement('div');
+    div.className = 'checkbox-item';
+    div.innerHTML = `
+      <input type="checkbox" id="${trait}" value="${trait}">
+      <label for="${trait}">${trait}</label>
+    `;
+    traitList.appendChild(div);
+  });
+});
+
+// Function to send WhatsApp message
+function sendWhatsApp() {
+  const phoneNumber = '0546883455';
+  const message = encodeURIComponent('היי! רציתי לשתף איתך משהו מיוחד מהאפליקציה לדייטים לזוגיות מקרבת.');
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+  window.open(whatsappUrl, '_blank');
+}
+
+// Add other functions here (generateYesNoQuestion, searchYouTube, searchGoogle, generateCookingTask, findMemoryPhotos, startMassageTimer, shareGratitude, getDeepQuestion)
+// These functions should be implemented to make the respective buttons work
+</script>
+</body></html>
